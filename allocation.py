@@ -33,3 +33,8 @@ def get_assist_prof():
     profs = sorted(profs, key = lambda d: d['emp_id'])
     return profs
 
+def allocate_profs():
+    profs = get_prof()
+    for prof in profs:
+        if get_avail(prof['pref']['p1']) > 0:
+            pass

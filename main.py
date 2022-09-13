@@ -1,5 +1,5 @@
 import math
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Form
 from fastapi.middleware.cors import CORSMiddleware
 
 import firebase_admin
@@ -12,6 +12,7 @@ db = firestore.client()
 courses = db.collection(u'courses')
 faculty = db.collection(u'faculty')
 wishes = db.collection(u'wishes')
+fac_login = db.collection(u'fac_login')
 
 app = FastAPI()
 app.add_middleware(
@@ -132,3 +133,20 @@ def get_filled_fac():
 
     return data
     
+@app.post('/faclogin')
+async def user_login(req : Request):
+    doc = await req.json()
+
+    user = {
+        "email" : doc['email'],
+        "passw" : doc['password']
+    }
+
+    doc = fac_login.document(user['email'])
+    doc = doc.get()
+
+    print(doc.to_dict())
+    return doc
+    
+    
+
