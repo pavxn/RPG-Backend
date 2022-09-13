@@ -1,0 +1,11 @@
+We have a nbatches count from wishlist.
+Professors get to select preferences in the beginning
+Once they have selected their 5 choices, store and decrease the nbatches count for those courses.
+Once it r eaches zero, freeze it. Faculty after this wont be able to choose that course.
+Preferences is done.
+
+During allocation, hierarchy is maintained. among same category - empid takes preference
+allocate first course based on availabilty. if same course is available again, allocate
+or else keep moving to next preference.
+
+finish allocation 2 for all.
